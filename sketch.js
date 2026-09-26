@@ -23,9 +23,14 @@ let x = 0;
 const y = 0;
 const width = 30;
 
+// function drawRectangle (x, y, width, height, color) {
+//     r.DrawRectangle(x, y, width, height, color);
+// }
+
 function draw() {
     r.BeginDrawing();
     r.ClearBackground(r.BLACK);
+    r.DrawRectangle(150, y, 100, windowHeight, r.BLUE);
     r.DrawRectangle(x, y, width, windowHeight, r.WHITE);
     r.EndDrawing();
 }
