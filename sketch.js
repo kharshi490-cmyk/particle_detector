@@ -12,16 +12,25 @@ function setup() {
 }
 
 function update() {
-    if (windowWidth === x + width || x === 0) {
+    if (windowWidth === scannerX + scannerWidth || scannerX === 0) {
         direction = -direction
     }
-    x += direction;
+    scannerX += direction;
+
+    if (scannerX + scannerWidth >= fieldX && scannerX <= fieldX + fieldWidth) {
+        color = r.RED;
+    } else {
+        color = r.WHITE;
+    }
 }
 
 let direction = -1;
-let x = 0;
-const y = 0;
-const width = 30;
+let scannerX = 0;
+const scannerWidth = 30;
+
+let color = r.WHITE;
+const fieldX = 150;
+const fieldWidth = 100;
 
 // function drawRectangle (x, y, width, height, color) {
 //     r.DrawRectangle(x, y, width, height, color);
@@ -30,8 +39,8 @@ const width = 30;
 function draw() {
     r.BeginDrawing();
     r.ClearBackground(r.BLACK);
-    r.DrawRectangle(150, y, 100, windowHeight, r.BLUE);
-    r.DrawRectangle(x, y, width, windowHeight, r.WHITE);
+    r.DrawRectangle(fieldX, 0, fieldWidth, windowHeight, r.BLUE);
+    r.DrawRectangle(scannerX, 0, scannerWidth, windowHeight, color);
     r.EndDrawing();
 }
 
