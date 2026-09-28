@@ -2,6 +2,7 @@ const r = require("raylib");
 const s = require("./scanner.js")
 const s1 = require("./scanner1.js");
 const s2 = require("./scanner2.js");
+const s3 = require("./scanner3.js");
 
 function running() {
     return !r.WindowShouldClose();
@@ -38,15 +39,10 @@ function update() {
     s2.x = s.moveScanner(s2.velocity, s2.x);
     s2.color = chooseColor(s2.x, s2.width, field1_x, field1_width, field2_x, field2_width);
 
-    scanner3_velocity = s.changeVelocity(horizontalY, horizontal_height, r.GetScreenHeight(), scanner3_velocity, 0);
-    horizontalY = s.moveScanner(scanner3_velocity, horizontalY);
-    horizontal_color = chooseColor(horizontalY, horizontal_height, horizontal_fieldY, horizontal_fieldHeight, 0, 0);
+    s3.velocity = s.changeVelocity(s3.y, s3.height, r.GetScreenHeight(), s3.velocity, 0);
+    s3.y = s.moveScanner(s3.velocity, s3.y);
+    s3.color = chooseColor(s3.y, s3.height, horizontal_fieldY, horizontal_fieldHeight, 0, 0);
 }
-
-// let s2.velocity = 1;
-// let s2.x = GetScreenWidth() / 2;
-// const s2.width = 20;
-// let s2.color = r.WHITE;
 
 const field1_x = 150;
 const field1_width = 40;
@@ -57,10 +53,10 @@ const field2_width = 30;
 const horizontal_fieldY = 300;
 const horizontal_fieldHeight = 50;
 
-let scanner3_velocity = 2;
-let horizontalY = 0;
-const horizontal_height = 50;
-let horizontal_color = r.WHITE;
+// let s3.velocity = 2;
+// let s3.y = 0;
+// const s3.height = 50;
+// let s3.color = r.WHITE;
 
 function drawField(x, y, width, height) {
     r.DrawRectangle(x, y, width, height, r.BLUE);
@@ -79,7 +75,7 @@ function draw() {
     drawField(0, horizontal_fieldY, r.GetScreenWidth(), horizontal_fieldHeight);
     drawRange(s1.x, 0, s1.width, r.GetScreenHeight(), s1.color);
     drawRange(s2.x, 0, s2.width, r.GetScreenHeight(), s2.color);
-    drawRange(0, horizontalY, r.GetScreenWidth(), horizontal_height, horizontal_color);
+    drawRange(0, s3.y, r.GetScreenWidth(), s3.height, s3.color);
 
     r.EndDrawing();
 }
