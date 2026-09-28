@@ -12,10 +12,11 @@ function setup() {
     r.SetTargetFPS(100);
 }
 
-function choosecolor(scannerX, scannerWidth, x, width) {
-    if (scannerX + scannerWidth >= x && scannerX <= x + width) {
+function choosecolor(scannerX, scannerWidth, fieldX, fieldWidth) {
+    if (scannerX + scannerWidth >= fieldX && scannerX <= fieldX + fieldWidth) {
         return r.RED;
-    } else {
+    }
+    if (scannerX + scannerWidth < fieldX || scannerX > fieldX + fieldWidth) {
         return r.WHITE;
     }
 }
