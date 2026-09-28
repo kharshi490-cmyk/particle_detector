@@ -8,7 +8,9 @@ function loop() {
 }
 
 function main() {
-    sketch.setup();
+    const windowWidth = 600;
+    const windowHeight = 600;
+    sketch.setup(windowWidth, windowHeight);
     loop();
     sketch.teardown();
 }
