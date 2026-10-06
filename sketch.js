@@ -27,6 +27,7 @@ function setup(window) {
 function update(world) {
     s.updateScanner(world.s1, world.f1, world.f2);
     s.updateScanner(world.s2, world.f1, world.f2);
+
     h.updateHorizontalScanner(world.s3, world.h_f1);
 }
 
